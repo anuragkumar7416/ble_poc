@@ -35,25 +35,38 @@ class _PairedDevicesState extends State<PairedDevices> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return Flexible(
+      fit: FlexFit.loose,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(height: 30,),
           const Text('Paired Devices',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 20),),
           const SizedBox(height: 30,),
 
-          Expanded(
+          Flexible(
+            fit: FlexFit.loose,
             child: FutureBuilder(
                 future: _getPairedDevice(),
                 builder: (context, snapshot) {
                   return ListView.separated(
+                    shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      //physics: const NeverScrollableScrollPhysics(),
+
                       itemCount: snapshot.data?.length ?? 0,
                       itemBuilder: (context, index) {
                         return SizedBox(
                           height: 50,
                             width: MediaQuery.of(context).size.width,
-                            child: Text(snapshot.data?[index] ?? '',style: const TextStyle(fontSize: 15),));
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(snapshot.data?[index] ?? '',style: const TextStyle(fontSize: 15),),
+                              ],
+                            ));
                       }, separatorBuilder: (BuildContext context, int index) {
                         return const Divider(thickness: 1,);
                   },);

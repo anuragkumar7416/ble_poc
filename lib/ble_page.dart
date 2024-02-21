@@ -1,4 +1,5 @@
 import 'package:ble_poc/ble_cubit.dart';
+import 'package:ble_poc/widgets/available_devices.dart';
 import 'package:ble_poc/widgets/ble_switch.dart';
 import 'package:ble_poc/widgets/paired_devices.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +28,11 @@ class _BLEPageState extends State<BLEPage> {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children:  [
                   const BLESwitch(),
                   state.isSwitch?PairedDevices():SizedBox(),
+                  state.isSwitch?AvailableDevices():SizedBox(),
                 ],
               ),
             );

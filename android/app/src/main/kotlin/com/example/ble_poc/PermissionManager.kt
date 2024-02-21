@@ -26,6 +26,8 @@ object PermissionManager {
         permission.add(Manifest.permission.ACCESS_COARSE_LOCATION)
         permission.add(Manifest.permission.BLUETOOTH)
         permission.add(Manifest.permission.BLUETOOTH_ADMIN)
+        permission.add(Manifest.permission.CALL_PHONE)
+
 
         Log.i("SSSS", "SS ${android.os.Build.VERSION.SDK_INT}")
         // Android 12
